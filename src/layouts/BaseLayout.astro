@@ -63,7 +63,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
     <script defer>
       // Reveal-on-scroll (client-only)
       (() => {
-        const els = Array.from(document.querySelectorAll(".reveal"))
+        const els = document.querySelectorAll(".reveal")
         if (!els.length) return
 
         const observer = new IntersectionObserver(
@@ -78,7 +78,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
           { threshold: 0.12 },
         )
 
-        for (const el of els) observer.observe(el)
+        els.forEach((el) => observer.observe(el))
       })()
     </script>
   </body>

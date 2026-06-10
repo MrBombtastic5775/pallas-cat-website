@@ -36,7 +36,7 @@ const colClass = {
             loading="lazy"
             decoding="async"
             class="w-full object-cover"
-            fetchpriority={i === 0 ? "high" : undefined}
+            fetchpriority={undefined}
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
         </button>
@@ -67,12 +67,12 @@ const colClass = {
 
 <script>
   const lightbox = document.getElementById("lightbox")
-  const lbImg = document.getElementById("lightbox-img") as HTMLImageElement | null
+  const lbImg = document.getElementById("lightbox-img")
   const lbCap = document.getElementById("lightbox-caption")
   const closeBtn = document.getElementById("lightbox-close")
 
   function open(src: string, alt: string, caption: string) {
-    if (!lightbox || !lbImg || !lbCap) return
+    if (!lightbox || !(lbImg instanceof HTMLImageElement) || !lbCap) return
     if (!src) return
 
     lbImg.src = src
@@ -82,6 +82,7 @@ const colClass = {
     lightbox.classList.add("flex")
     document.body.style.overflow = "hidden"
   }
+
   function close() {
     if (!lightbox) return
     lightbox.classList.add("hidden")
@@ -89,11 +90,17 @@ const colClass = {
     document.body.style.overflow = ""
   }
 
-  document.querySelectorAll<HTMLElement>(".gallery-trigger").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      open(btn.dataset.src ?? "", btn.dataset.alt ?? "", btn.dataset.caption ?? "")
-    })
+  // Delegate gallery clicks to avoid per-image event wiring.
+  // First click initializes the lightbox image (no per-button listeners).
+  document.addEventListener("click", (e) => {
+    const target = e.target
+    if (!(target instanceof HTMLElement)) return
+    const btn = target.closest(".gallery-trigger")
+    if (!(btn instanceof HTMLElement)) return
+
+    open(btn.dataset.src ?? "", btn.dataset.alt ?? "", btn.dataset.caption ?? "")
   })
+
   closeBtn?.addEventListener("click", close)
   lightbox?.addEventListener("click", (e) => {
     if (e.target === lightbox) close()
@@ -102,3 +109,4 @@ const colClass = {
     if (e.key === "Escape") close()
   })
 </script>
+

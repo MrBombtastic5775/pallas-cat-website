@@ -116,13 +116,13 @@ const homeGallery = [
             <img
               src={t.image}
               alt={t.title}
-              loading={i < 2 ? "eager" : "lazy"}
+              loading="lazy"
               decoding="async"
               class="h-full w-full object-cover"
-              fetchpriority={i < 1 ? "high" : undefined}
               sizes="(max-width: 1024px) 100vw, 420px"
             />
           </div>
+
           <div class="flex flex-1 flex-col p-6">
             <span class="text-xs font-semibold tracking-[0.16em] text-rust">{String(i + 1).padStart(2, "0")}</span>
             <h3 class="mt-1.5 font-serif text-2xl font-semibold tracking-tight text-ink">{t.title}</h3>
