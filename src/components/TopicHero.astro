@@ -12,7 +12,15 @@ const { eyebrow, title, intro, image, imageAlt } = Astro.props
 
 <section class="relative overflow-hidden border-b border-line bg-ink text-parchment">
   <div class="absolute inset-0">
-    <img src={image} alt={imageAlt} class="h-full w-full object-cover opacity-45" />
+    <img
+      src={image}
+      alt={imageAlt}
+      fetchpriority="high"
+      decoding="async"
+      loading="eager"
+      class="h-full w-full object-cover opacity-45"
+      sizes="(max-width: 1024px) 100vw, 1200px"
+    />
     <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
   </div>
   <div class="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">

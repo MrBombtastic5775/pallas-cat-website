@@ -25,7 +25,15 @@ const homeGallery = [
   <!-- HERO -->
   <section class="relative min-h-[88vh] overflow-hidden">
     <div class="absolute inset-0">
-      <img src={homeHero.src} alt="A Pallas's cat sitting on a frost-covered rock at dawn in the Mongolian steppe" class="h-full w-full object-cover" />
+      <img
+        src={homeHero.src}
+        alt="A Pallas's cat sitting on a frost-covered rock at dawn in the Mongolian steppe"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="h-full w-full object-cover"
+        sizes="100vw"
+      />
       <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/25"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-ink/55 to-transparent"></div>
     </div>
@@ -105,7 +113,15 @@ const homeGallery = [
       {topics.map((t, i) => (
         <a href={t.href} class="reveal img-zoom group flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-parchment-2 transition hover:border-ink/25">
           <div class="aspect-[16/10] overflow-hidden bg-stone">
-            <img src={t.image} alt={t.title} loading={i < 3 ? "eager" : "lazy"} decoding="async" class="h-full w-full object-cover" />
+            <img
+              src={t.image}
+              alt={t.title}
+              loading={i < 2 ? "eager" : "lazy"}
+              decoding="async"
+              class="h-full w-full object-cover"
+              fetchpriority={i < 1 ? "high" : undefined}
+              sizes="(max-width: 1024px) 100vw, 420px"
+            />
           </div>
           <div class="flex flex-1 flex-col p-6">
             <span class="text-xs font-semibold tracking-[0.16em] text-rust">{String(i + 1).padStart(2, "0")}</span>

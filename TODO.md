@@ -8,8 +8,9 @@
 - [x] Gallery: improve script type safety.
 - [x] Figure component: set fetchpriority + sizes to improve LCP behavior.
 - [x] Run build + lighthouse/perf checks (or at least astro build) to ensure nothing broke.
-- [ ] Review remaining image tags (TopicHero, full-bleed feature on index, etc.) and apply same lazy/priority strategy.
+- [x] Review remaining image tags (TopicHero, full-bleed feature on index, etc.) and apply same lazy/priority strategy.
 - [ ] Consider adding Astro image optimization (if desired) for all images.
+
 
 
 
