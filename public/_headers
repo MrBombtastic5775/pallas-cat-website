@@ -1,0 +1,29 @@
+# _headers — Cache-Control and security headers for Pallas Cat Atlas
+# Works on Netlify, Cloudflare Pages, and most static hosts
+
+# HTML — short cache, revalidate
+/*
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Fonts — long-lived, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Generated images — long-lived, immutable
+/generated/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Astro build assets (hashed filenames) — long-lived, immutable
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Sitemap — short cache
+/sitemap*.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Favicon and manifest
+/favicon.png
+  Cache-Control: public, max-age=86400
