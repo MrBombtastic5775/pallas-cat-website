@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import TopicHero from "../components/TopicHero.astro"
+import TopicNav from "../components/TopicNav.astro"
+import Figure from "../components/Figure.astro"
+import Gallery from "../components/Gallery.astro"
+
+import g02 from "../assets/images/gallery-02.png"
+import g07 from "../assets/images/gallery-07.png"
+import dietHero from "../assets/images/diet-hero.png"
+
+const prey = [
+  { label: "Pikas", text: "Small, rabbit-like lagomorphs that form the dietary cornerstone across much of the manul's range." },
+  { label: "Voles & gerbils", text: "Abundant small rodents taken year-round; their local cycles strongly influence manul numbers." },
+  { label: "Ground squirrels & marmots", text: "Larger rodents, including young marmots, taken when available — their burrows also double as dens." },
+  { label: "Birds & insects", text: "Ground-dwelling birds, fledglings, and large insects supplement the diet, especially in summer." },
+]
+
+const gallery = [
+  { src: dietHero.src, alt: "A Pallas's cat stalking across the steppe at dusk", caption: "A patient, low stalk replaces the sprint most cats rely on." },
+  { src: g02.src, alt: "A Pallas's cat moving across open ground", caption: "Hunting routes follow cover between rocks and burrow fields." },
+  { src: g07.src, alt: "A Pallas's cat reaching up against a rock", caption: "Flushing prey from crevices calls for patience and precision." },
+]
+---
+
+<BaseLayout
+  title="Diet & Hunting — The Manul Atlas"
+  description="The ambush strategy and prey of the Pallas's cat: pikas, voles, small birds and more."
+  image={dietHero.src}
+>
+  <TopicHero
+    eyebrow="Chapter 04 · Diet & Hunting"
+    title="The patient ambush predator"
+    intro="The manul is a specialist of small steppe prey, trading the sprint of other cats for stillness, stalking, and a hunter's endless patience."
+    image={dietHero.src}
+    imageAlt="A Pallas's cat in a low stalking posture at dusk"
+  />
+
+  <article class="mx-auto max-w-3xl px-5 py-16 lg:px-0">
+    <div class="prose-editorial">
+      <p>
+        Pallas's cats are obligate carnivores whose diet revolves around small mammals. Across most of their range,
+        pikas — small, vocal relatives of rabbits — and various rodents such as voles, gerbils, and ground
+        squirrels make up the bulk of what they eat. The cat supplements this with ground-nesting birds, fledglings,
+        and large insects, particularly during the warmer months when such prey is abundant.
+      </p>
+      <p>
+        Because the manul is a poor runner, it does not chase prey across open ground. Instead it hunts by ambush
+        and stalking: creeping low between rocks and tufts of grass, freezing when prey looks up, and closing the
+        final distance in a short rush. It will also wait motionless outside a burrow or pika colony, relying on
+        concealment and timing rather than speed to make a kill.
+      </p>
+    </div>
+
+    <div class="my-12">
+      <Figure
+        src={dietHero.src}
+        alt="A Pallas's cat in an intense low stalking posture"
+        caption="Hunting success is tightly linked to prey availability. Where pika and rodent populations crash, manul numbers often follow — a vulnerability for a specialist predator."
+        ratio="16/10"
+      />
+    </div>
+
+    <h2 class="mb-6 font-serif text-3xl font-semibold tracking-tight text-ink">On the menu</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {prey.map((p) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{p.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{p.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-editorial mt-12">
+      <h2 class="mb-4 font-serif text-3xl font-semibold tracking-tight text-ink">A specialist's risk</h2>
+      <p>
+        The manul's reliance on pikas and small rodents links its fortunes directly to those populations. In
+        regions where pikas are poisoned as agricultural pests, the cat loses both a food source and, indirectly,
+        the burrow systems it depends on for shelter. This makes seemingly distant land-management decisions a real
+        threat to local manul survival.
+      </p>
+      <p>
+        Seasonality shapes the hunt as well. In the long, lean winter, prey is scarcer and the cat must range
+        farther and hunt more by day. The thick winter coat that keeps it warm also lets it stay out and active in
+        conditions that would defeat a less well-insulated predator.
+      </p>
+    </div>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-5 lg:px-8">
+    <Gallery images={gallery} columns={3} />
+  </section>
+
+  <TopicNav current="/diet" />
+  <div class="h-10"></div>
+</BaseLayout>

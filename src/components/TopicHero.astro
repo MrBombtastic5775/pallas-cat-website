@@ -1,0 +1,27 @@
+---
+interface Props {
+  eyebrow: string
+  title: string
+  intro: string
+  image: string
+  imageAlt: string
+}
+
+const { eyebrow, title, intro, image, imageAlt } = Astro.props
+---
+
+<section class="relative overflow-hidden border-b border-line bg-ink text-parchment">
+  <div class="absolute inset-0">
+    <img src={image} alt={imageAlt} class="h-full w-full object-cover opacity-45" />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
+  </div>
+  <div class="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+    <p class="eyebrow text-gold">{eyebrow}</p>
+    <h1 class="mt-4 max-w-3xl text-balance font-serif text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+      {title}
+    </h1>
+    <p class="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-parchment/80">
+      {intro}
+    </p>
+  </div>
+</section>

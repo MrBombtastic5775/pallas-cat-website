@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Gallery from "../components/Gallery.astro"
+
+import g01 from "../assets/images/gallery-01.png"
+import g02 from "../assets/images/gallery-02.png"
+import g03 from "../assets/images/gallery-03.png"
+import g04 from "../assets/images/gallery-04.png"
+import g05 from "../assets/images/gallery-05.png"
+import g06 from "../assets/images/gallery-06.png"
+import g07 from "../assets/images/gallery-07.png"
+import g08 from "../assets/images/gallery-08.png"
+import g09 from "../assets/images/gallery-09.png"
+import g10 from "../assets/images/gallery-10.png"
+import g11 from "../assets/images/gallery-11.png"
+import g12 from "../assets/images/gallery-12.png"
+import overviewHero from "../assets/images/overview-hero.png"
+import habitatHero from "../assets/images/habitat-hero.png"
+import conservationHero from "../assets/images/conservation-hero.png"
+import reproHero from "../assets/images/repro-hero.png"
+import dietHero from "../assets/images/diet-hero.png"
+import textureFur from "../assets/images/texture-fur.png"
+
+const portraits = [
+  { src: g01.src, alt: "A grumpy-looking Pallas's cat in snow", caption: "Winter coat, full frost." },
+  { src: g03.src, alt: "Macro of a Pallas's cat's eyes", caption: "Round pupils and amber eyes." },
+  { src: g08.src, alt: "A Pallas's cat yawning", caption: "A wide yawn on the steppe." },
+  { src: overviewHero.src, alt: "Portrait of a Pallas's cat's flat face", caption: "The unmistakable flattened face." },
+  { src: g04.src, alt: "A Pallas's cat peeking over a rock", caption: "Peering over cover." },
+  { src: textureFur.src, alt: "Macro texture of Pallas's cat fur", caption: "The densest coat of any cat." },
+]
+
+const habitatShots = [
+  { src: g11.src, alt: "A Pallas's cat on a ridge above a valley", caption: "Surveying the valley below." },
+  { src: g02.src, alt: "A Pallas's cat walking across the steppe", caption: "Low and stocky in profile." },
+  { src: g12.src, alt: "A Pallas's cat in autumn grasses", caption: "Autumn on the steppe." },
+  { src: g10.src, alt: "A Pallas's cat hidden in tall grass", caption: "Camouflaged in dry grass." },
+  { src: habitatHero.src, alt: "Steppe and rocky highland landscape", caption: "Classic manul country." },
+  { src: conservationHero.src, alt: "A lone Pallas's cat at golden hour", caption: "Solitude at sunset." },
+]
+
+const lifeShots = [
+  { src: reproHero.src, alt: "Two Pallas's cat kittens at a den", caption: "Kittens at the den entrance." },
+  { src: g09.src, alt: "A single Pallas's cat kitten", caption: "A young manul exploring." },
+  { src: g05.src, alt: "A Pallas's cat curled up resting", caption: "Resting, tail wrapped close." },
+  { src: g06.src, alt: "A Pallas's cat in deep snow", caption: "Built for brutal winters." },
+  { src: g07.src, alt: "A Pallas's cat stretching up a rock", caption: "Reaching into a crevice." },
+  { src: dietHero.src, alt: "A Pallas's cat stalking at dusk", caption: "The patient ambush." },
+]
+---
+
+<BaseLayout
+  title="Gallery — The Manul Atlas"
+  description="An extensive photographic gallery of the Pallas's cat: portraits, habitat, and life on the steppe."
+  image={g01.src}
+>
+  <header class="border-b border-line bg-ink text-parchment">
+    <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <p class="eyebrow text-gold">The collection</p>
+      <h1 class="mt-4 max-w-3xl text-balance font-serif text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        A photographic study of the manul
+      </h1>
+      <p class="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-parchment/80">
+        Eighteen frames across portrait, habitat, and life history. Select any image to view it full size.
+      </p>
+    </div>
+  </header>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <h2 class="mb-2 font-serif text-3xl font-semibold tracking-tight text-ink">Portraits & detail</h2>
+    <p class="mb-8 max-w-2xl text-ink-soft">The face, the eyes, and the extraordinary coat that define the species.</p>
+    <Gallery images={portraits} columns={3} />
+  </section>
+
+  <section class="border-y border-line bg-parchment-2">
+    <div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+      <h2 class="mb-2 font-serif text-3xl font-semibold tracking-tight text-ink">Habitat & landscape</h2>
+      <p class="mb-8 max-w-2xl text-ink-soft">The open steppe, rocky ridges, and high country the manul calls home.</p>
+      <Gallery images={habitatShots} columns={3} />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <h2 class="mb-2 font-serif text-3xl font-semibold tracking-tight text-ink">Life & behavior</h2>
+    <p class="mb-8 max-w-2xl text-ink-soft">Kittens, rest, winter survival, and the hunt.</p>
+    <Gallery images={lifeShots} columns={3} />
+  </section>
+</BaseLayout>

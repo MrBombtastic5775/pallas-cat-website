@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import TopicHero from "../components/TopicHero.astro"
+import TopicNav from "../components/TopicNav.astro"
+import Figure from "../components/Figure.astro"
+import Gallery from "../components/Gallery.astro"
+
+import behaviorHero from "../assets/images/behavior-hero.png"
+import g04 from "../assets/images/gallery-04.png"
+import g08 from "../assets/images/gallery-08.png"
+import g10 from "../assets/images/gallery-10.png"
+
+const traits = [
+  { label: "Solitary", text: "Outside the brief breeding season, manuls live alone, maintaining and patrolling individual home ranges marked with scent." },
+  { label: "Crepuscular", text: "Most active at dawn and dusk, when prey is moving and the flat light helps conceal a low-slung hunter." },
+  { label: "Camouflage-first", text: "Rather than flee, a threatened manul freezes, flattens, and relies on its grey coat to dissolve into the rocks." },
+  { label: "Low & slow", text: "It moves in a crouched, deliberate creep between cover, rarely sprinting — its body is built for stealth, not speed." },
+]
+
+const gallery = [
+  { src: behaviorHero.src, alt: "A camouflaged Pallas's cat among rocks", caption: "Freeze and blend: the manul's first line of defense is stillness." },
+  { src: g04.src, alt: "A Pallas's cat peeking over a rock", caption: "Low-set ears let it peer over cover without breaking its outline." },
+  { src: g10.src, alt: "A Pallas's cat hidden in tall grass", caption: "Dappled cover and a frosted coat make it nearly invisible." },
+  { src: g08.src, alt: "A Pallas's cat yawning", caption: "Expressive faces have made the manul a favorite of wildlife photographers." },
+]
+---
+
+<BaseLayout
+  title="Behavior — The Manul Atlas"
+  description="How the secretive, solitary Pallas's cat hunts, hides, and survives on the open steppe."
+  image={behaviorHero.src}
+>
+  <TopicHero
+    eyebrow="Chapter 03 · Behavior"
+    title="The art of disappearing"
+    intro="Solitary, secretive, and superbly camouflaged, the manul has built its entire behavioral repertoire around one idea: not being seen."
+    image={behaviorHero.src}
+    imageAlt="A Pallas's cat crouched and camouflaged among grey rocks"
+  />
+
+  <article class="mx-auto max-w-3xl px-5 py-16 lg:px-0">
+    <div class="prose-editorial">
+      <p>
+        The Pallas's cat is one of the most elusive small felids in the world. It is solitary, territorial, and
+        active mainly during the twilight hours of dawn and dusk, though it will hunt during the day in colder
+        months. Where many cats rely on agility and speed, the manul relies almost entirely on concealment. Its
+        short legs and stocky frame make it a poor sprinter, so survival hinges on never being noticed in the
+        first place.
+      </p>
+      <p>
+        When a threat appears, the manul's instinct is not to run but to freeze. It flattens its body against the
+        ground, tucks in, and uses its low-set ears and grey, frost-flecked coat to merge with the surrounding
+        rock. Only as a last resort will it bolt for the nearest crevice or burrow. This behavior, beautifully
+        suited to a treeless landscape, is part of why the cat is so rarely glimpsed in the wild.
+      </p>
+    </div>
+
+    <div class="my-12">
+      <Figure
+        src={g04.src}
+        alt="A Pallas's cat with only its head visible above a rock"
+        caption="The flattened face and low ears are not just curiosities of appearance — they let the manul watch over a ridge or rock while exposing almost nothing of itself."
+        ratio="16/10"
+      />
+    </div>
+
+    <h2 class="mb-6 font-serif text-3xl font-semibold tracking-tight text-ink">Behavioral signatures</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {traits.map((t) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{t.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{t.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-editorial mt-12">
+      <h2 class="mb-4 font-serif text-3xl font-semibold tracking-tight text-ink">Communication & temperament</h2>
+      <p>
+        Manuls communicate through scent marking, body posture, and a limited range of vocalizations including
+        growls, yelps, and a distinctive call used during the breeding season. For most of the year, however, they
+        actively avoid one another. Encounters between adults are brief and largely confined to mating.
+      </p>
+      <p>
+        In captivity, Pallas's cats are known for being wary and easily stressed — a reflection of their wild
+        temperament. They remain alert and defensive even when well cared for, a trait that complicates breeding
+        programs and underscores just how finely tuned this animal is to a life of caution.
+      </p>
+    </div>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-5 lg:px-8">
+    <Gallery images={gallery} columns={2} />
+  </section>
+
+  <TopicNav current="/behavior" />
+  <div class="h-10"></div>
+</BaseLayout>

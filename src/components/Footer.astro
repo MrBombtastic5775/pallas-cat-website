@@ -1,0 +1,49 @@
+---
+import { topics } from "../data/site"
+---
+
+<footer class="mt-24 border-t border-line bg-ink text-parchment">
+  <div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-1">
+        <h2 class="font-serif text-2xl font-semibold tracking-tight">The Manul Atlas</h2>
+        <p class="mt-3 max-w-xs text-sm leading-relaxed text-parchment/70">
+          A comprehensive visual field guide to <em>Otocolobus manul</em> — the Pallas's cat of the Central Asian steppe.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="eyebrow text-gold">Topics</h3>
+        <ul class="mt-4 space-y-2.5">
+          {topics.map((t) => (
+            <li>
+              <a href={t.href} class="text-sm text-parchment/75 transition-colors hover:text-parchment">{t.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="eyebrow text-gold">Explore</h3>
+        <ul class="mt-4 space-y-2.5">
+          <li><a href="/field-guide" class="text-sm text-parchment/75 transition-colors hover:text-parchment">Field Guide & Facts</a></li>
+          <li><a href="/gallery" class="text-sm text-parchment/75 transition-colors hover:text-parchment">Photo Gallery</a></li>
+          <li><a href="/overview" class="text-sm text-parchment/75 transition-colors hover:text-parchment">Species Overview</a></li>
+          <li><a href="/conservation" class="text-sm text-parchment/75 transition-colors hover:text-parchment">Conservation</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="eyebrow text-gold">About</h3>
+        <p class="mt-4 text-sm leading-relaxed text-parchment/70">
+          An educational resource compiled from field research and natural history sources. Imagery is illustrative.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col items-start justify-between gap-4 border-t border-parchment/15 pt-6 text-xs text-parchment/55 sm:flex-row sm:items-center">
+      <p>&copy; {new Date().getFullYear()} The Manul Atlas. For education and conservation awareness.</p>
+      <p>Built with Astro · Steppe-cold, dawn-lit, ever-watchful.</p>
+    </div>
+  </div>
+</footer>

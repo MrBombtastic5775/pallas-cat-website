@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import TopicHero from "../components/TopicHero.astro"
+import TopicNav from "../components/TopicNav.astro"
+import Figure from "../components/Figure.astro"
+import Gallery from "../components/Gallery.astro"
+
+import g01 from "../assets/images/gallery-01.png"
+import g12 from "../assets/images/gallery-12.png"
+import conservationHero from "../assets/images/conservation-hero.png"
+
+const threats = [
+  { label: "Habitat degradation", text: "Overgrazing, mining, and infrastructure fragment the steppe and erode the prey base the cat depends on." },
+  { label: "Prey poisoning", text: "Programs to poison pikas and rodents as pests remove the manul's primary food and can poison cats directly." },
+  { label: "Hunting & trapping", text: "Historically hunted for its fur and still caught in traps set for other animals, or killed by herders' dogs." },
+  { label: "Climate pressure", text: "Shifting weather patterns alter prey cycles and snow conditions across a range already defined by extremes." },
+]
+
+const efforts = [
+  { label: "IUCN status", text: "Listed as Least Concern since 2020 after better survey data, but with a population trend assessed as declining." },
+  { label: "Legal protection", text: "Protected across much of its range and listed on CITES Appendix II, restricting international trade." },
+  { label: "Research alliances", text: "Coordinated field studies — notably the Pallas's Cat International Conservation Alliance — fill critical knowledge gaps." },
+  { label: "Ex-situ programs", text: "Zoos worldwide maintain careful breeding and health programs to safeguard genetic diversity and study the species." },
+]
+
+const gallery = [
+  { src: conservationHero.src, alt: "A lone Pallas's cat on a ridge at golden hour", caption: "Naturally sparse and hard to count, the manul is easy to overlook in conservation planning." },
+  { src: g01.src, alt: "A Pallas's cat in snow", caption: "Cold-adapted and range-restricted, with little room to shift as conditions change." },
+  { src: g12.src, alt: "A Pallas's cat in autumn grassland", caption: "Healthy steppe and intact prey populations are the foundation of its future." },
+]
+---
+
+<BaseLayout
+  title="Conservation — The Manul Atlas"
+  description="Threats facing the Pallas's cat, its IUCN status, and the global effort to protect it."
+  image={conservationHero.src}
+>
+  <TopicHero
+    eyebrow="Chapter 06 · Conservation"
+    title="Protecting a cat we barely see"
+    intro="Naturally rare, widely scattered, and notoriously difficult to study, the manul presents one of the harder puzzles in small-cat conservation."
+    image={conservationHero.src}
+    imageAlt="A lone Pallas's cat overlooking a vast steppe at golden hour"
+  />
+
+  <article class="mx-auto max-w-3xl px-5 py-16 lg:px-0">
+    <div class="prose-editorial">
+      <p>
+        The Pallas's cat is currently classified as Least Concern by the IUCN, a status updated in 2020 after
+        expanded surveys revealed the species was more widespread than once feared. That label, however, comes with
+        an important caveat: the overall population trend is assessed as <em>declining</em>. The cat's natural
+        rarity and vast, remote range make accurate counts extremely difficult, and local populations can vanish
+        without ever being recorded.
+      </p>
+      <p>
+        The pressures are largely indirect. The manul is rarely targeted on purpose today, but it suffers from the
+        cumulative effects of human activity across the steppe — degraded grassland, poisoned prey, incidental
+        trapping, and predation by domestic and herding dogs. For a low-density specialist, even modest losses can
+        tip a local population toward collapse.
+      </p>
+    </div>
+
+    <div class="my-12">
+      <Figure
+        src={conservationHero.src}
+        alt="A solitary Pallas's cat on a rocky ridge at sunset"
+        caption="Conserving the manul means conserving the steppe itself: its prey, its burrow-digging neighbors, and the wide, intact landscapes that a low-density predator needs to persist."
+        ratio="16/10"
+      />
+    </div>
+
+    <h2 class="mb-6 font-serif text-3xl font-semibold tracking-tight text-ink">Key threats</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {threats.map((t) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{t.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{t.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="mb-6 mt-12 font-serif text-3xl font-semibold tracking-tight text-ink">What is being done</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {efforts.map((e) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{e.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{e.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-editorial mt-12">
+      <h2 class="mb-4 font-serif text-3xl font-semibold tracking-tight text-ink">A future on the steppe</h2>
+      <p>
+        Protecting the Pallas's cat is, in practice, about protecting the whole steppe ecosystem. Safeguarding pika
+        and rodent populations, limiting poisoning campaigns, maintaining intact grassland, and reducing incidental
+        trapping all benefit the manul alongside countless other species. International research collaborations
+        continue to close basic gaps in our knowledge — from population size to disease ecology — that are
+        essential to managing the species well.
+      </p>
+      <p>
+        For now, the manul endures across a huge sweep of Asia, hidden in plain sight among the rocks. Keeping it
+        there will depend on sustained attention to a cat that, by its very nature, does everything it can not to
+        be noticed.
+      </p>
+    </div>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-5 lg:px-8">
+    <Gallery images={gallery} columns={3} />
+  </section>
+
+  <TopicNav current="/conservation" />
+  <div class="h-10"></div>
+</BaseLayout>

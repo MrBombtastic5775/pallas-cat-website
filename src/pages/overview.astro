@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import TopicHero from "../components/TopicHero.astro"
+import TopicNav from "../components/TopicNav.astro"
+import Figure from "../components/Figure.astro"
+import Gallery from "../components/Gallery.astro"
+
+import g01 from "../assets/images/gallery-01.png"
+import g02 from "../assets/images/gallery-02.png"
+import g03 from "../assets/images/gallery-03.png"
+import overviewHero from "../assets/images/overview-hero.png"
+import textureFur from "../assets/images/texture-fur.png"
+
+const anatomy = [
+  { label: "Coat", text: "The densest and longest fur of any cat relative to body size — up to 9,000 hairs per cm² — which nearly doubles in length on the belly and tail for winter insulation." },
+  { label: "Ears", text: "Small, rounded, and set low and wide on the sides of the head, allowing the cat to peek over rocks and ridges while keeping a low silhouette." },
+  { label: "Pupils", text: "Round rather than vertical slits — unusual among small cats and thought to relate to the steppe's flat, diffuse light." },
+  { label: "Build", text: "Stocky and short-legged with a broad, flattened face. The thick coat exaggerates its size; the actual body is only slightly larger than a domestic cat's." },
+]
+
+const gallery = [
+  { src: g02.src, alt: "Full body profile of a Pallas's cat walking", caption: "The low, stocky build and short legs are clear in profile." },
+  { src: g03.src, alt: "Close-up of a Pallas's cat's round pupils", caption: "Round pupils set the manul apart from most small cats." },
+  { src: textureFur.src, alt: "Macro texture of dense Pallas's cat fur", caption: "Silver guard hairs with white tips create a frosted look." },
+]
+---
+
+<BaseLayout
+  title="Species Overview — The Manul Atlas"
+  description="Taxonomy, anatomy, and the unmistakable features of the Pallas's cat (Otocolobus manul)."
+  image={overviewHero.src}
+>
+  <TopicHero
+    eyebrow="Chapter 01 · Species Overview"
+    title="A small cat unlike any other"
+    intro="Compact, frost-furred, and instantly recognizable, the Pallas's cat is the sole living member of its genus — a felid shaped entirely by the cold open country it calls home."
+    image={overviewHero.src}
+    imageAlt="Close-up portrait of a Pallas's cat's distinctive flat face"
+  />
+
+  <article class="mx-auto max-w-3xl px-5 py-16 lg:px-0">
+    <div class="prose-editorial">
+      <p>
+        The Pallas's cat (<em>Otocolobus manul</em>) is a small wild cat named after the German naturalist Peter
+        Simon Pallas, who first described the species in 1776. The name <em>Otocolobus</em> derives from Greek for
+        "ugly-eared," a reference to its short, low-set ears — though most observers find the manul anything but ugly.
+        It is the only species in its genus, making it evolutionarily distinct from the closely related leopard cats.
+      </p>
+      <p>
+        What strikes nearly everyone first is the fur. The manul carries the densest coat of any cat measured
+        relative to its body size, an adaptation to the brutally cold, dry environments it inhabits. That coat,
+        combined with a broad head and stout body, gives the illusion of a much larger animal. In reality, a
+        Pallas's cat weighs only 2.5 to 4.5 kilograms — comparable to a typical house cat.
+      </p>
+    </div>
+
+    <div class="my-12">
+      <Figure
+        src={g01.src}
+        alt="A Pallas's cat with a thick winter coat sitting in snow"
+        caption="In winter, the coat lengthens and thickens dramatically, especially on the underside, insulating the cat against temperatures that routinely fall well below freezing."
+        ratio="16/10"
+      />
+    </div>
+
+    <h2 class="mb-6 font-serif text-3xl font-semibold tracking-tight text-ink">Defining anatomy</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {anatomy.map((a) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{a.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{a.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-editorial mt-12">
+      <h2 class="mb-4 font-serif text-3xl font-semibold tracking-tight text-ink">Taxonomy & relatives</h2>
+      <p>
+        Genetic studies place the manul within the <em>Felinae</em> subfamily, diverging from the leopard cat
+        lineage several million years ago. Historically three subspecies were recognized based on coat color and
+        markings across the range, though modern genetic work suggests the variation is more clinal than discrete.
+        Regardless of classification, populations from the cold Mongolian plateau tend to be greyer, while those
+        from more arid southern ranges can appear warmer and more ochre-toned.
+      </p>
+      <p>
+        Despite a superficial resemblance to a fluffy domestic cat, the manul is not closely related to house cats
+        and does not interbreed with them. Its closest living relatives are the small Asian wild cats, and its
+        unique appearance reflects a long, independent evolutionary path on the steppe.
+      </p>
+    </div>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-5 lg:px-8">
+    <Gallery images={gallery} columns={3} />
+  </section>
+
+  <TopicNav current="/overview" />
+  <div class="h-10"></div>
+</BaseLayout>

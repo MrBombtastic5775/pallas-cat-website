@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import TopicHero from "../components/TopicHero.astro"
+import TopicNav from "../components/TopicNav.astro"
+import Figure from "../components/Figure.astro"
+import Gallery from "../components/Gallery.astro"
+
+import g05 from "../assets/images/gallery-05.png"
+import g09 from "../assets/images/gallery-09.png"
+import reproHero from "../assets/images/repro-hero.png"
+
+const cycle = [
+  { label: "Breeding season", text: "A short window in late winter and early spring. Females are receptive for only a day or two, making timing critical." },
+  { label: "Gestation", text: "Roughly 66–75 days, after which the female gives birth in a sheltered den, rock crevice, or borrowed burrow." },
+  { label: "Litter size", text: "Typically 2–6 kittens, born blind and helpless with a darker, woolly coat that lightens as they mature." },
+  { label: "Independence", text: "Kittens begin hunting at around 4 months and reach adult size by 6–8 months, dispersing to find their own range." },
+]
+
+const gallery = [
+  { src: reproHero.src, alt: "Two Pallas's cat kittens at a den entrance", caption: "Litters shelter in dens until they are strong enough to follow the hunt." },
+  { src: g09.src, alt: "A single Pallas's cat kitten exploring", caption: "Young manuls face steep odds in their first year." },
+  { src: g05.src, alt: "A Pallas's cat resting curled among rocks", caption: "Adults are long-lived in captivity but face a far shorter span in the wild." },
+]
+---
+
+<BaseLayout
+  title="Reproduction & Lifespan — The Manul Atlas"
+  description="Breeding season, vulnerable kittens, and the lifespan of the Pallas's cat in the wild and captivity."
+  image={reproHero.src}
+>
+  <TopicHero
+    eyebrow="Chapter 05 · Reproduction & Lifespan"
+    title="A narrow window, a hard beginning"
+    intro="The manul's brief breeding season and vulnerable young reflect the demands of raising a litter on one of the planet's most unforgiving landscapes."
+    image={reproHero.src}
+    imageAlt="Two fluffy Pallas's cat kittens peering from a rocky den"
+  />
+
+  <article class="mx-auto max-w-3xl px-5 py-16 lg:px-0">
+    <div class="prose-editorial">
+      <p>
+        Reproduction in the Pallas's cat is shaped by the steppe's short, harsh seasons. Mating occurs in a narrow
+        window in late winter, around December to early spring depending on latitude. Females come into estrus only
+        briefly — often a window of just a day or two — so males must locate and compete for receptive females
+        quickly. This compressed timing helps ensure that kittens are born when spring brings milder weather and
+        rising prey numbers.
+      </p>
+      <p>
+        After a gestation of roughly 66 to 75 days, the female gives birth to a litter of two to six kittens in a
+        sheltered den. Newborns are blind, helpless, and covered in a darker, woolly coat. The mother raises them
+        alone; as in most cats, the male plays no role in rearing young.
+      </p>
+    </div>
+
+    <div class="my-12">
+      <Figure
+        src={g09.src}
+        alt="A young Pallas's cat kitten exploring rocky ground"
+        caption="Mortality in the first year is high. Harsh weather, predators such as eagles and foxes, and the difficulty of learning to hunt all take a heavy toll on young manuls."
+        ratio="16/10"
+      />
+    </div>
+
+    <h2 class="mb-6 font-serif text-3xl font-semibold tracking-tight text-ink">From den to dispersal</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {cycle.map((c) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{c.label}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{c.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-editorial mt-12">
+      <h2 class="mb-4 font-serif text-3xl font-semibold tracking-tight text-ink">Lifespan</h2>
+      <p>
+        Kittens grow quickly. They begin venturing out and learning to hunt at around four months and approach
+        adult size by six to eight months, after which they disperse to establish their own home ranges. Females
+        can breed in their first year, an adaptation that helps offset high juvenile mortality.
+      </p>
+      <p>
+        In the wild, life is short: many Pallas's cats live only a few years, with average wild lifespans estimated
+        around six years given predation, disease, and the rigors of the climate. In captivity, where those
+        pressures are removed, individuals can live to eleven or twelve years — though captive breeding remains
+        challenging due to the species' sensitivity to stress and high infant susceptibility to disease.
+      </p>
+    </div>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-5 lg:px-8">
+    <Gallery images={gallery} columns={3} />
+  </section>
+
+  <TopicNav current="/reproduction" />
+  <div class="h-10"></div>
+</BaseLayout>

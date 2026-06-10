@@ -1,0 +1,81 @@
+---
+import { mainNav } from "../data/site"
+
+const path = Astro.url.pathname
+function isActive(href: string) {
+  return path === href || (href !== "/" && path.startsWith(href))
+}
+---
+
+<header class="sticky top-0 z-50 border-b border-line/70 bg-parchment/85 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3.5 lg:px-8">
+    <a href="/" class="group flex items-center gap-2.5">
+      <span class="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-parchment">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 9c0-3 1.6-5 3-5 .9 0 1.4 1 1.6 2.2M19 9c0-3-1.6-5-3-5-.9 0-1.4 1-1.6 2.2" />
+          <path d="M4.5 11c0 4.5 3 8 7.5 8s7.5-3.5 7.5-8c0-2.8-1-5-2.6-6.3" />
+          <path d="M9.2 12.2c.4.5 1 .8 1.4.8M14.8 12.2c-.4.5-1 .8-1.4.8" />
+          <path d="M12 15.2v1.3M12 16.5c-.7 0-1.2.4-1.5.9M12 16.5c.7 0 1.2.4 1.5.9" />
+        </svg>
+      </span>
+      <span class="leading-tight">
+        <span class="block font-serif text-lg font-semibold tracking-tight text-ink">The Manul Atlas</span>
+        <span class="block text-[0.62rem] font-medium uppercase tracking-[0.2em] text-muted">Pallas's Cat Field Guide</span>
+      </span>
+    </a>
+
+    <ul class="hidden items-center gap-1 lg:flex">
+      {mainNav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
+              isActive(item.href) ? "bg-ink text-parchment" : "text-ink-soft hover:bg-stone/70 hover:text-ink",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <button
+      id="menu-toggle"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink lg:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" />
+      </svg>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="hidden border-t border-line/70 bg-parchment lg:hidden">
+    <ul class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4">
+      {mainNav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "block rounded-lg px-4 py-2.5 text-sm font-medium",
+              isActive(item.href) ? "bg-ink text-parchment" : "text-ink-soft hover:bg-stone/70",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle")
+  const menu = document.getElementById("mobile-menu")
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden")
+    toggle.setAttribute("aria-expanded", String(open === false))
+  })
+</script>

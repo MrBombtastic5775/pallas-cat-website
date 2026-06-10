@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Gallery from "../components/Gallery.astro"
+import { topics, quickFacts } from "../data/site"
+
+import g01 from "../assets/images/gallery-01.png"
+import g04 from "../assets/images/gallery-04.png"
+import g06 from "../assets/images/gallery-06.png"
+import g08 from "../assets/images/gallery-08.png"
+import g10 from "../assets/images/gallery-10.png"
+import g11 from "../assets/images/gallery-11.png"
+import homeHero from "../assets/images/home-hero.png"
+
+const homeGallery = [
+  { src: g01.src, alt: "Pallas's cat with a grumpy expression sitting in snow", caption: "Winter coat — the densest fur of any cat species." },
+  { src: g04.src, alt: "Pallas's cat peeking over a rock", caption: "Low-set ears help it peer over rocks without being seen." },
+  { src: g10.src, alt: "Pallas's cat hidden among golden grasses", caption: "Camouflage on the open steppe." },
+  { src: g08.src, alt: "Pallas's cat yawning", caption: "A rare expressive moment." },
+  { src: g11.src, alt: "Pallas's cat on a high ridge at golden hour", caption: "Surveying its rocky territory." },
+  { src: g06.src, alt: "Pallas's cat in deep snow", caption: "Adapted to brutal continental winters." },
+]
+---
+
+<BaseLayout title="The Manul Atlas — A Visual Field Guide to the Pallas's Cat">
+  <!-- HERO -->
+  <section class="relative min-h-[88vh] overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={homeHero.src} alt="A Pallas's cat sitting on a frost-covered rock at dawn in the Mongolian steppe" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/25"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink/55 to-transparent"></div>
+    </div>
+
+    <div class="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 lg:px-8 lg:pb-24">
+      <p class="eyebrow text-gold">Otocolobus manul · The Steppe Ghost</p>
+      <h1 class="mt-5 max-w-4xl text-balance font-serif text-5xl font-semibold leading-[1.02] tracking-tight text-parchment sm:text-6xl lg:text-7xl">
+        The Pallas's Cat
+      </h1>
+      <p class="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-parchment/85 sm:text-xl">
+        Small, secretive, and superbly adapted to one of Earth's harshest landscapes. Explore the biology,
+        behavior, and survival of the most expressive wild cat of the Central Asian steppe.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="/overview" class="rounded-full bg-rust px-6 py-3 text-sm font-semibold text-parchment transition hover:bg-rust-deep">
+          Begin the guide
+        </a>
+        <a href="/gallery" class="rounded-full border border-parchment/40 bg-parchment/5 px-6 py-3 text-sm font-semibold text-parchment backdrop-blur-sm transition hover:bg-parchment/15">
+          View the gallery
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <section class="border-b border-line bg-parchment-2">
+    <div class="mx-auto grid max-w-7xl gap-8 px-5 py-14 lg:grid-cols-12 lg:px-8">
+      <div class="lg:col-span-5">
+        <h2 class="text-balance font-serif text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
+          A cat built for cold, stone, and silence
+        </h2>
+      </div>
+      <div class="prose-editorial lg:col-span-7">
+        <p>
+          The Pallas's cat — also called the manul — is a small wild felid roughly the size of a domestic cat,
+          yet it looks far larger thanks to an extraordinarily dense, stocky coat. It ranges across the cold
+          grasslands, semi-deserts, and rocky highlands of Central Asia, from the Caspian Sea to Mongolia and China.
+        </p>
+        <p>
+          Almost everything about the manul is an adaptation to its unforgiving home: low-set ears that keep its
+          profile hidden while peering over rocks, flattened facial features, round pupils unusual among small cats,
+          and the thickest fur of any cat relative to its size. This atlas brings together the species across
+          eight illustrated chapters.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK FACTS -->
+  <section class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <p class="eyebrow text-rust">At a glance</p>
+        <h2 class="mt-2 font-serif text-3xl font-semibold tracking-tight text-ink">Quick facts</h2>
+      </div>
+      <a href="/field-guide" class="hidden text-sm font-semibold text-ink underline-offset-4 hover:underline sm:block">Full field guide &rarr;</a>
+    </div>
+    <dl class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line md:grid-cols-3 lg:grid-cols-5">
+      {quickFacts.map((f) => (
+        <div class="bg-parchment p-5">
+          <dt class="text-xs uppercase tracking-[0.14em] text-muted">{f.label}</dt>
+          <dd class="mt-1.5 font-serif text-base font-medium leading-snug text-ink">{f.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <!-- TOPIC INDEX -->
+  <section class="mx-auto max-w-7xl px-5 py-10 lg:px-8">
+    <div class="mb-10">
+      <p class="eyebrow text-rust">Browse by topic</p>
+      <h2 class="mt-2 max-w-2xl text-balance font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        Eight chapters on the manul
+      </h2>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {topics.map((t, i) => (
+        <a href={t.href} class="reveal img-zoom group flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-line bg-parchment-2 transition hover:border-ink/25">
+          <div class="aspect-[16/10] overflow-hidden bg-stone">
+            <img src={t.image} alt={t.title} loading={i < 3 ? "eager" : "lazy"} decoding="async" class="h-full w-full object-cover" />
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <span class="text-xs font-semibold tracking-[0.16em] text-rust">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="mt-1.5 font-serif text-2xl font-semibold tracking-tight text-ink">{t.title}</h3>
+            <p class="mt-2.5 flex-1 text-sm leading-relaxed text-ink-soft">{t.blurb}</p>
+            <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-ink">
+              Read chapter
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- FULL-BLEED FEATURE -->
+  <section class="relative my-16 overflow-hidden">
+    <div class="relative h-[60vh] min-h-[420px]">
+      <img src="/images/gallery-03.png" alt="Extreme close-up of a Pallas's cat's amber eyes and dense facial fur" class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center">
+        <div class="mx-auto w-full max-w-7xl px-5 lg:px-8">
+          <blockquote class="max-w-xl">
+            <p class="font-serif text-2xl font-medium leading-snug text-parchment sm:text-3xl lg:text-4xl">
+              "Unlike most small cats, the manul has round pupils — a quiet clue to a life lived in low, even steppe light."
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME GALLERY PREVIEW -->
+  <section class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+    <div class="mb-10 flex items-end justify-between gap-4">
+      <div>
+        <p class="eyebrow text-rust">Selected imagery</p>
+        <h2 class="mt-2 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">From the gallery</h2>
+      </div>
+      <a href="/gallery" class="shrink-0 text-sm font-semibold text-ink underline-offset-4 hover:underline">See all photos &rarr;</a>
+    </div>
+    <Gallery images={homeGallery} columns={3} />
+  </section>
+</BaseLayout>

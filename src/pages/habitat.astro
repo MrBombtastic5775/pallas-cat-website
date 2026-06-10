@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import TopicHero from "../components/TopicHero.astro"
+import TopicNav from "../components/TopicNav.astro"
+import Figure from "../components/Figure.astro"
+import Gallery from "../components/Gallery.astro"
+
+import g06 from "../assets/images/gallery-06.png"
+import g11 from "../assets/images/gallery-11.png"
+import g12 from "../assets/images/gallery-12.png"
+import habitatHero from "../assets/images/habitat-hero.png"
+
+const ranges = [
+  { region: "Mongolia & China", text: "The stronghold of the species. Vast steppe, semi-desert, and rocky grassland on the Mongolian Plateau support the densest known populations." },
+  { region: "Central Asian states", text: "Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan, and Turkmenistan hold scattered populations across montane steppe and cold desert margins." },
+  { region: "Russia & the Caucasus", text: "Southern Siberia, the Altai, Transbaikal, and isolated pockets in the Caucasus mark the northern and western edges of the range." },
+  { region: "Tibetan Plateau & Himalaya", text: "Recorded above 5,000 m in parts of Nepal, Bhutan, and the Tibetan Plateau — among the highest-living of all cats." },
+]
+
+const gallery = [
+  { src: habitatHero.src, alt: "Wide steppe and rocky highland habitat", caption: "Open grassland broken by rock — ideal terrain for an ambush hunter." },
+  { src: g11.src, alt: "A Pallas's cat surveying a steppe valley from a ridge", caption: "Rocky ridges double as shelter and lookout posts." },
+  { src: g12.src, alt: "A Pallas's cat in autumn steppe grasses", caption: "Seasonal color shifts across the range, from grey plateau to ochre desert margin." },
+  { src: g06.src, alt: "A Pallas's cat in deep winter snow", caption: "Winters are long and severe; insulation and shelter are everything." },
+]
+---
+
+<BaseLayout
+  title="Habitat & Range — The Manul Atlas"
+  description="The cold steppes, rocky outcrops, and high plateaus of Central Asia where Pallas's cats live."
+  image={habitatHero.src}
+>
+  <TopicHero
+    eyebrow="Chapter 02 · Habitat & Range"
+    title="A life written into cold, open country"
+    intro="From the Mongolian steppe to the roof of the Tibetan Plateau, the manul occupies some of the harshest, most exposed landscapes any cat calls home."
+    image={habitatHero.src}
+    imageAlt="Sweeping steppe and rocky highland habitat"
+  />
+
+  <article class="mx-auto max-w-3xl px-5 py-16 lg:px-0">
+    <div class="prose-editorial">
+      <p>
+        Pallas's cats are animals of the cold, dry, open lands of Central Asia. Their range stretches in a broad
+        band from the Caspian region eastward across the steppes and mountains of Mongolia and China. Within that
+        enormous area they are patchily distributed, tied closely to a specific combination of features: short
+        vegetation for cover, rocky outcrops or marmot burrows for shelter, and healthy populations of small prey.
+      </p>
+      <p>
+        These are not forest cats. They avoid dense woodland and truly lowland desert alike, favoring montane
+        grassland, semi-desert, and rocky steppe between roughly 450 and 5,050 meters in elevation. The terrain is
+        defined by temperature extremes — scorching, arid summers and winters that plunge far below freezing with
+        biting wind and little snow cover to soften it.
+      </p>
+    </div>
+
+    <div class="my-12">
+      <Figure
+        src={g11.src}
+        alt="A Pallas's cat perched on a rocky ledge above a vast valley"
+        caption="Rocky ridges provide three things at once: shelter from wind and cold, concealment from larger predators, and an elevated vantage for watching the open ground below."
+        ratio="16/10"
+      />
+    </div>
+
+    <h2 class="mb-6 font-serif text-3xl font-semibold tracking-tight text-ink">Across the range</h2>
+    <div class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-line bg-line sm:grid-cols-2">
+      {ranges.map((r) => (
+        <div class="bg-parchment-2 p-6">
+          <h3 class="font-serif text-xl font-semibold text-ink">{r.region}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{r.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose-editorial mt-12">
+      <h2 class="mb-4 font-serif text-3xl font-semibold tracking-tight text-ink">Shelter & home range</h2>
+      <p>
+        Because the manul cannot rely on speed to escape danger across open ground, shelter is central to its
+        survival. It dens in rock crevices, small caves, and — very often — the abandoned burrows of marmots and
+        other steppe mammals. These refuges buffer the cat against weather extremes and offer protection from
+        larger predators such as eagles, wolves, and red foxes.
+      </p>
+      <p>
+        Home ranges are large relative to the cat's size, reflecting the low productivity of the steppe. Males in
+        particular may range over tens of square kilometers, and densities are naturally low even in good habitat.
+        This sparse distribution is one reason the species is so difficult to survey and study in the wild.
+      </p>
+    </div>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-5 lg:px-8">
+    <Gallery images={gallery} columns={2} />
+  </section>
+
+  <TopicNav current="/habitat" />
+  <div class="h-10"></div>
+</BaseLayout>
