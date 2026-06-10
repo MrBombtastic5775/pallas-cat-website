@@ -33,11 +33,10 @@ const colClass = {
           <img
             src={img.src}
             alt={img.alt}
-            loading={i < 3 ? "eager" : "lazy"}
+            loading="lazy"
             decoding="async"
-            fetchpriority={i < 3 ? "high" : undefined}
             class="w-full object-cover"
-            style={i < 3 ? "content-visibility:auto;" : undefined}
+            fetchpriority={i === 0 ? "high" : undefined}
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
         </button>
@@ -74,6 +73,8 @@ const colClass = {
 
   function open(src: string, alt: string, caption: string) {
     if (!lightbox || !lbImg || !lbCap) return
+    if (!src) return
+
     lbImg.src = src
     lbImg.alt = alt
     lbCap.textContent = caption
@@ -88,10 +89,9 @@ const colClass = {
     document.body.style.overflow = ""
   }
 
-  document.querySelectorAll(".gallery-trigger").forEach((btn) => {
+  document.querySelectorAll<HTMLElement>(".gallery-trigger").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const el = btn as HTMLElement
-      open(el.dataset.src ?? "", el.dataset.alt ?? "", el.dataset.caption ?? "")
+      open(btn.dataset.src ?? "", btn.dataset.alt ?? "", btn.dataset.caption ?? "")
     })
   })
   closeBtn?.addEventListener("click", close)

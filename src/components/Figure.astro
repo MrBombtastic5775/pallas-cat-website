@@ -11,7 +11,16 @@ const { src, alt, caption, ratio = "16/10", rounded = true } = Astro.props
 
 <figure class="reveal my-2">
   <div class={`img-zoom overflow-hidden border border-line bg-stone ${rounded ? "rounded-[var(--radius-card)]" : ""}`}>
-    <img src={src} alt={alt} loading="lazy" decoding="async" style={`aspect-ratio:${ratio}`} class="w-full object-cover" />
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      style={`aspect-ratio:${ratio}`}
+      class="w-full object-cover"
+      fetchpriority="low"
+      sizes="(max-width: 768px) 100vw, 900px"
+    />
   </div>
   {caption && <figcaption class="mt-2.5 text-sm leading-relaxed text-muted">{caption}</figcaption>}
 </figure>
