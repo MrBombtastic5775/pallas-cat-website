@@ -35,7 +35,10 @@ const colClass = {
             alt={img.alt}
             loading={i < 3 ? "eager" : "lazy"}
             decoding="async"
+            fetchpriority={i < 3 ? "high" : undefined}
             class="w-full object-cover"
+            style={i < 3 ? "content-visibility:auto;" : undefined}
+            sizes="(max-width: 1024px) 100vw, 33vw"
           />
         </button>
         {img.caption && (
