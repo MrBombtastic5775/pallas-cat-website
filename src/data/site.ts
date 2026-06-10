@@ -13,51 +13,51 @@ export interface NavItem {
 export const topics: { title: string; href: string; blurb: string; image: string }[] = [
   {
     title: "Species Overview",
-    href: "/overview",
+    href: "/pallas-cat-website/overview",
     blurb: "Taxonomy, anatomy, and the unmistakable features that make the manul one of the world's most distinctive small cats.",
     image: overviewHero.src,
   },
   {
     title: "Habitat & Range",
-    href: "/habitat",
+    href: "/pallas-cat-website/habitat",
     blurb: "The cold steppes, rocky outcrops, and high plateaus of Central Asia where Pallas's cats make their home.",
     image: habitatHero.src,
   },
   {
     title: "Behavior",
-    href: "/behavior",
+    href: "/pallas-cat-website/behavior",
     blurb: "Solitary, secretive, and superbly camouflaged — how the manul hunts, hides, and survives.",
     image: behaviorHero.src,
   },
   {
     title: "Diet & Hunting",
-    href: "/diet",
+    href: "/pallas-cat-website/diet",
     blurb: "Pikas, voles, and small birds: the ambush predator's menu and stalking strategy.",
     image: dietHero.src,
   },
   {
     title: "Reproduction & Lifespan",
-    href: "/reproduction",
+    href: "/pallas-cat-website/reproduction",
     blurb: "A brief breeding season, vulnerable kittens, and the challenges of growing up on the steppe.",
     image: reproHero.src,
   },
   {
     title: "Conservation",
-    href: "/conservation",
+    href: "/pallas-cat-website/conservation",
     blurb: "Threats, protections, and the global effort to safeguard a famously hard-to-study cat.",
     image: conservationHero.src,
   },
 ]
 
 export const mainNav: NavItem[] = [
-  { label: "Overview", href: "/overview" },
-  { label: "Habitat", href: "/habitat" },
-  { label: "Behavior", href: "/behavior" },
-  { label: "Diet", href: "/diet" },
-  { label: "Reproduction", href: "/reproduction" },
-  { label: "Conservation", href: "/conservation" },
-  { label: "Field Guide", href: "/field-guide" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Overview", href: "/pallas-cat-website/overview" },
+  { label: "Habitat", href: "/pallas-cat-website/habitat" },
+  { label: "Behavior", href: "/pallas-cat-website/behavior" },
+  { label: "Diet", href: "/pallas-cat-website/diet" },
+  { label: "Reproduction", href: "/pallas-cat-website/reproduction" },
+  { label: "Conservation", href: "/pallas-cat-website/conservation" },
+  { label: "Field Guide", href: "/pallas-cat-website/field-guide" },
+  { label: "Gallery", href: "/pallas-cat-website/gallery" },
 ]
 
 export const quickFacts = [
