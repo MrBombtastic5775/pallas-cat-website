@@ -3,6 +3,8 @@ interface ImageItem {
   src: string
   alt: string
   caption?: string
+  width?: number
+  height?: number
 }
 
 interface Props {
@@ -35,6 +37,8 @@ const colClass = {
             alt={img.alt}
             loading="lazy"
             decoding="async"
+            width={img.width}
+            height={img.height}
             class="w-full object-cover"
             fetchpriority={undefined}
             sizes="(max-width: 1024px) 100vw, 33vw"

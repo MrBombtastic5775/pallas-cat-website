@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Figure from "../components/Figure.astro"
 import { quickFacts, topics } from "../data/site"
+import g03 from "../assets/images/gallery-03.png"
 
 const classification = [
   { rank: "Kingdom", value: "Animalia" },
@@ -26,7 +27,7 @@ const didYouKnow = [
 <BaseLayout
   title="Field Guide — The Manul Atlas"
   description="A quick-reference field guide to the Pallas's cat: classification, measurements, and fast facts."
-  image="/images/gallery-03.png"
+  image={g03.src}
 >
   <header class="border-b border-line bg-ink text-parchment">
     <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
@@ -67,7 +68,7 @@ const didYouKnow = [
         </dl>
         <div class="mt-6">
           <Figure
-            src="/pallas-cat-website/images/gallery-03.png" 
+            src={g03.src}
             alt="Close-up of a Pallas's cat's eyes"
             caption="Otocolobus manul — Pallas (1776)."
             ratio="4/3"

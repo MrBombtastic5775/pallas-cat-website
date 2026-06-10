@@ -10,6 +10,7 @@ import g08 from "../assets/images/gallery-08.png"
 import g10 from "../assets/images/gallery-10.png"
 import g11 from "../assets/images/gallery-11.png"
 import homeHero from "../assets/images/home-hero.png"
+import g03 from "../assets/images/gallery-03.png"
 
 const homeGallery = [
   { src: g01.src, alt: "Pallas's cat with a grumpy expression sitting in snow", caption: "Winter coat — the densest fur of any cat species." },
@@ -140,7 +141,13 @@ const homeGallery = [
   <!-- FULL-BLEED FEATURE -->
   <section class="relative my-16 overflow-hidden">
     <div class="relative h-[60vh] min-h-[420px]">
-      <img src="/pallas-cat-website/images/gallery-03.png" alt="Extreme close-up of a Pallas's cat's amber eyes and dense facial fur" class="h-full w-full object-cover" />
+      <img
+        src={g03.src}
+        alt="Extreme close-up of a Pallas's cat's amber eyes and dense facial fur"
+        class="h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-transparent"></div>
       <div class="absolute inset-0 flex items-center">
         <div class="mx-auto w-full max-w-7xl px-5 lg:px-8">
